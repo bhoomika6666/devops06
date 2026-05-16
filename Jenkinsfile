@@ -1,10 +1,14 @@
 pipeline{
-  agent any
+  agent{
+    docker{
+      image 'node:20-alpine'
+    }
+  }
   stages{
-    stage('Verify Environment'){
+    stage('Docker Build test'){
       steps{
-        echo 'Checking local tools....'
-        sh 'docker --version'
+        echo 'Successfully running inside an isolated Node Doxker Container!!'
+        sh 'node -v' 
       }
     }
   }
